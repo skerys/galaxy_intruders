@@ -17,7 +17,7 @@ public class ShipControls : MonoBehaviour{
 
     private void Update(){
         Vector2 direction = new Vector2(input.Horizontal, input.Vertical);
-        direction = direction.normalized;
+        if(direction.magnitude > 1) direction = direction.normalized;
 
         rb.velocity = direction * moveSpeed;
 
