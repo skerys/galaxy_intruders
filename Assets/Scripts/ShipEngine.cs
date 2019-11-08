@@ -2,9 +2,18 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class ShipControls : MonoBehaviour{
+public class ShipEngine : MonoBehaviour{
 
     [SerializeField] float moveSpeed;
+
+    private ShipFactory originFactory;
+    public ShipFactory OriginFactory{
+        get => originFactory;
+        set {
+            Debug.Assert(originFactory == null, "Redefined origin factory");
+            originFactory = value;
+        }
+    }
 
     IShipInput input;
     private Rigidbody2D rb;
