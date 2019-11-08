@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 463794391}
   - component: {fileID: 463794390}
   - component: {fileID: 463794389}
+  - component: {fileID: 463794395}
   m_Layer: 0
   m_Name: sheet_1
   m_TagString: Untagged
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286f8d97f668c1141bad72ebb02276bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
 --- !u!114 &463794390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,12 +271,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463794388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5268712, y: -0.2901495, z: 0}
+  m_LocalPosition: {x: 0, y: -3.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463794395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463794388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc87109368e113a4796244f81decb7db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squashAndStretch: 0
+  maxVelocity: 10
 --- !u!1 &523743707
 GameObject:
   m_ObjectHideFlags: 0

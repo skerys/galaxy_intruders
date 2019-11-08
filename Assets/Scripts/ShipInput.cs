@@ -12,7 +12,8 @@ public class ShipInput : MonoBehaviour,  IShipInput
     void Update()
     {
         Horizontal = Input.GetAxis("Horizontal");
-        Vertical = Input.GetAxis("Vertical");
+        //Vertical = Input.GetAxis("Vertical");
+        Vertical = 0;
 
         if(Input.GetKeyDown(KeyCode.K)){
             OnPrimaryFire();
