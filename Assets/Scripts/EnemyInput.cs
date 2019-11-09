@@ -17,8 +17,13 @@ public class EnemyInput : MonoBehaviour, IShipInput
 
     private void Update()
     {
-        if(transform.position.x >= 10.0f || transform.position.x <= -10.0f){
+        if(transform.position.x >= 7.0f || transform.position.x <= -7.0f){
             Horizontal = -Horizontal;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Horizontal = -Horizontal;
     }
 }

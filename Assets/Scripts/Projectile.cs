@@ -18,8 +18,9 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<ShipEngine>()){
-            Destroy(other.gameObject);
+        ShipEngine engine = other.gameObject.GetComponent<ShipEngine>();
+        if(engine){
+            engine.OriginFactory.Reclaim(engine);
         }
         Destroy(this.gameObject);
     }
