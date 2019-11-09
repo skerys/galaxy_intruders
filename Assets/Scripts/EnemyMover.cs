@@ -41,7 +41,6 @@ public class EnemyMover : MonoBehaviour
                 currentLineMoved = false;
                 currentLineIndex++;
                 if(currentLineIndex >= enemyShips.Count){
-                    Debug.Log("last line moved");
                     currentLineIndex = 0;
                     moveTimer = 0.0f;
                     if(moveLeft!=newMoveLeft){
@@ -63,7 +62,7 @@ public class EnemyMover : MonoBehaviour
                         enemyShips[currentLineIndex][i].transform.Translate(new Vector3(deltaX, deltaY, 0), Space.World);
                     }else{
                         enemyShips[currentLineIndex].RemoveAt(i);
-                        lineMoveTimerOffset *= 0.75f;
+                        lineMoveTimerOffset *= 0.9f;
                     }
                 }
                 currentLineMoved = true;

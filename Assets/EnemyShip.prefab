@@ -139,9 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8665270815277784472, guid: 64b397cd8b65cc84098ce1085cddb80e,
     type: 3}
-  projectileLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  projectileLayer: 9
   launchOffset: {x: 0, y: -0.45, z: 0}
 --- !u!114 &5231524474374775000
 MonoBehaviour:
@@ -155,6 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c454f135dae043f4f909582956d79dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &5231524474374775001
 Rigidbody2D:
   serializedVersion: 4

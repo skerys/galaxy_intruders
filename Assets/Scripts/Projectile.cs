@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float destroyTimer = 5.0f;
+    [SerializeField] private float destroyTimer = 1.0f;
     [SerializeField] private float projectileSpeed = 20;
 
     private Rigidbody2D rb;
@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector3.up * projectileSpeed;
+        rb.velocity = transform.up * projectileSpeed;
         Destroy(this.gameObject, destroyTimer);
     }
 
@@ -20,7 +20,11 @@ public class Projectile : MonoBehaviour
     {
         ShipEngine engine = other.gameObject.GetComponent<ShipEngine>();
         if(engine){
-            engine.OriginFactory.Reclaim(engine);
+            if(engine.OriginFactory){
+                engine.OriginFactory.Reclaim(engine);
+            }else{
+                Destroy(engine.gameObject);
+            }
         }
         Destroy(this.gameObject);
     }

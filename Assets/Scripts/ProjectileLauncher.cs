@@ -23,7 +23,7 @@ public class ProjectileLauncher : MonoBehaviour
     }
 
     private void ShootProjectile(){
-        var projectile = Instantiate(projectilePrefab, transform.position + launchOffset, Quaternion.identity);
+        var projectile = Instantiate(projectilePrefab, transform.position + launchOffset, transform.rotation);
         projectile.layer = projectileLayer;
     }
 
