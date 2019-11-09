@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipEngine : MonoBehaviour{
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] float moveSpeed = 5.0f;
 
     private ShipFactory originFactory;
     public ShipFactory OriginFactory{

@@ -7,9 +7,11 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private Vector3 launchOffset;
 
     private IShipInput input;
+    private Collider2D thisCollider;
 
     private void Awake() {
         input = GetComponent<IShipInput>();
+        thisCollider = GetComponent<Collider2D>();
     }
 
     private void OnEnable() {
@@ -21,7 +23,8 @@ public class ProjectileLauncher : MonoBehaviour
     }
 
     private void ShootProjectile(){
-        Instantiate(projectilePrefab, transform.position + launchOffset, Quaternion.identity);
+        var projectile = Instantiate(projectilePrefab, transform.position + launchOffset, Quaternion.identity);
+        Physics2D.IgnoreCollision(thisCollider, projectile.GetComponent<Collider2D>());
     }
 
     private void OnDrawGizmos()

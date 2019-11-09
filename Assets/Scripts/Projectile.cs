@@ -16,4 +16,12 @@ public class Projectile : MonoBehaviour
         Destroy(this.gameObject, destroyTimer);
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.GetComponent<ShipEngine>()){
+            Destroy(other.gameObject);
+        }
+        Destroy(this.gameObject);
+    }
+
 }
