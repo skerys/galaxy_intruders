@@ -24,11 +24,11 @@ public class ShipEngine : MonoBehaviour{
         input = GetComponent<IShipInput>();
     }
 
-    private void Update(){
+    private void FixedUpdate(){
         Vector2 direction = new Vector2(input.Horizontal, input.Vertical);
         if(direction.magnitude > 1) direction = direction.normalized;
 
-        rb.velocity = direction * moveSpeed;
+        transform.Translate(direction * moveSpeed * Time.fixedDeltaTime);
 
     }
 

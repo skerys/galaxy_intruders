@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5231524474374775007}
   - component: {fileID: 5231524474374775000}
   - component: {fileID: 5231524474374775001}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,6 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8665270815277784472, guid: 64b397cd8b65cc84098ce1085cddb80e,
     type: 3}
+  projectileLayer:
+    serializedVersion: 2
+    m_Bits: 0
   launchOffset: {x: 0, y: -0.45, z: 0}
 --- !u!114 &5231524474374775000
 MonoBehaviour:
