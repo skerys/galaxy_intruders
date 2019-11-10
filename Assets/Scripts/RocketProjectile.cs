@@ -11,7 +11,7 @@ public class RocketProjectile : BaseProjectile
 
 
 
-    private LayerMask layerMask;
+    [SerializeField] private LayerMask enemyMask;
 
     private void Awake()
     {
@@ -20,15 +20,10 @@ public class RocketProjectile : BaseProjectile
         type = ProjectileType.HomingRocket;
     }
 
-    private void Start()
-    {
-        layerMask = ~(1 << gameObject.layer);//getting inverse layer of this
-    }
-
     void Update()
     {
         if(!target || !target.gameObject.activeInHierarchy){
-            var hit = Physics2D.OverlapCircle(transform.position, 2.0f, layerMask);
+            var hit = Physics2D.OverlapCircle(transform.position, 2.0f, enemyMask);
             if(hit){
                 target = hit.gameObject.GetComponent<ShipEngine>();
             }

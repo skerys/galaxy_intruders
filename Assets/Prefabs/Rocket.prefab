@@ -147,6 +147,9 @@ MonoBehaviour:
   type: 0
   destroyTimer: 2
   rotationSpeed: 5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8072634064998580382
 GameObject:
   m_ObjectHideFlags: 0

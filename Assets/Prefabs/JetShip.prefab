@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1432670668910919859}
   - component: {fileID: 1432670668910919861}
   - component: {fileID: 1432670668910919854}
+  - component: {fileID: 1378840826440884320}
   m_Layer: 9
   m_Name: JetShip
   m_TagString: Untagged
@@ -99,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00842613, y: 0}
+  m_Offset: {x: 0.0056310147, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33152324, y: 0.75}
+  m_Size: {x: 0.58455324, y: 0.75}
   m_EdgeRadius: 0
 --- !u!114 &1432670668910919856
 MonoBehaviour:
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factory: {fileID: 11400000, guid: 5a3695e590ef90140b64da196251ac88, type: 2}
   type: 1
-  projectileLayer: 9
+  projectileLayer: 13
   launchOffset: {x: 0, y: -0.45, z: 0}
 --- !u!50 &1432670668910919861
 Rigidbody2D:
@@ -186,6 +187,20 @@ MonoBehaviour:
     m_Bits: 512
   minCooldown: 1
   maxCooldown: 8
+--- !u!114 &1378840826440884320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432670668910919858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1506a4b6eb1fb5948a52407ea41e4c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups: {fileID: 11400000, guid: f9509da5184027a4681ab4abfe2f6a08, type: 2}
+  dropChance: 0.4
 --- !u!1 &6128250237333872885
 GameObject:
   m_ObjectHideFlags: 0

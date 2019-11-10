@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
     void Start(){
         enemyShips = new List<List<GameObject>>();
         CreatePlayer();
-        GenerateEnemiesStageOne();
+        GenerateEnemiesStageTwo();
         GetComponent<EnemyMover>().enemyShips = enemyShips;
     }
 
@@ -26,15 +26,44 @@ public class Game : MonoBehaviour
     }
 
     void GenerateEnemiesStageOne(){
-        for(int i = 0; i <= 3; i++){
+        for(int i = 0; i <= 2; i++){
             List<GameObject> shipLine = new List<GameObject>();
-            for(int j = -6; j <= 6; j+=2){
+            for(int j = -4; j <= 4; j+=2){
                 var ship = enemyFactory.Get(ShipType.EnemyStatic);
                 ship.transform.position = new Vector3(j, i, 0);
                 shipLine.Add(ship.gameObject);
             }
             enemyShips.Add(shipLine);
         }
+    }
+
+    void GenerateEnemiesStageTwo()
+    {
+        for (int i = 0; i <= 2; i++)
+        {
+            List<GameObject> shipLine = new List<GameObject>();
+            for (int j = -4; j <= 4; j += 2)
+            {
+                var ship = enemyFactory.Get(ShipType.EnemyJet);
+                ship.transform.position = new Vector3(j, i, 0);
+                shipLine.Add(ship.gameObject);
+            }
+            enemyShips.Add(shipLine);
+            GetComponent<EnemyMover>().enabled = false;
+        }
+    }
+
+    private void Update()
+    {
+        foreach(var shipLine in enemyShips)
+        {
+            foreach(var ship in shipLine)
+            {
+                if (ship.activeSelf) return;
+            }
+        }
+        enemyShips.Clear();
+        GenerateEnemiesStageTwo();
     }
 
 

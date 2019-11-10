@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bca6ba2f3832bf4f835d21ba1bb3651, type: 3}
+  m_Name: PickupList
+  m_EditorClassIdentifier: 
+  pickups:
+  - pickup: {fileID: 2799179825852852935, guid: c92156c9eb82e9645a15c0d3612e5cd3,
+      type: 3}
+    weight: 5
+  - pickup: {fileID: 1394924555447668142, guid: cef75d4dccc92814f899c92c01a917c2,
+      type: 3}
+    weight: 5
+  - pickup: {fileID: 1462193352321821236, guid: 4f2c027453e9ee34889e211c5244a509,
+      type: 3}
+    weight: 4
+  - pickup: {fileID: 7619838645176144248, guid: 7117524e4cbbbb9428cde0f98c62f7a0,
+      type: 3}
+    weight: 4
+  - pickup: {fileID: 4200164941128871821, guid: d46464201e0b53f4d9d895f80d56765c,
+      type: 3}
+    weight: 3
+  - pickup: {fileID: 8195302014977007854, guid: c29bdd2a5428f504a965d4f4ff4d8c94,
+      type: 3}
+    weight: 2

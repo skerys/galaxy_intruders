@@ -16,3 +16,5 @@ MonoBehaviour:
     type: 3}
   enemyJetPrefab: {fileID: 1432670668910919856, guid: ba5f31a6500d2ac409ba15e5cc0bbe50,
     type: 3}
+  playerPrefab: {fileID: 6187691305361913612, guid: 107039916271a6345857472b9d774deb,
+    type: 3}
