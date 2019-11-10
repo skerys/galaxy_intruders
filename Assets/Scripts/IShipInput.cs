@@ -5,5 +5,4 @@ public interface IShipInput{
     float Vertical{get; set;}
 
     event Action OnPrimaryFire;
-    event Action OnSecondaryFire;
 }

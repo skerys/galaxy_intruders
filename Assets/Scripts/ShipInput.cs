@@ -7,7 +7,10 @@ public class ShipInput : MonoBehaviour,  IShipInput
     public float Vertical{get; set;}
 
     public event Action OnPrimaryFire = delegate{};
-    public event Action OnSecondaryFire = delegate{};
+ 
+
+    [SerializeField] private float shotDelay = 1.0f;
+    private float shotTimer = 0.0f;
 
     void Update()
     {
@@ -15,11 +18,23 @@ public class ShipInput : MonoBehaviour,  IShipInput
         //Vertical = Input.GetAxis("Vertical");
         Vertical = 0;
 
-        if(Input.GetKeyDown(KeyCode.K)){
-            OnPrimaryFire();
+
+        if(shotTimer >= shotDelay)
+        {
+            if(Input.GetKey(KeyCode.K)){
+                OnPrimaryFire();
+                shotTimer = 0.0f;
+            }
         }
-        if(Input.GetKeyDown(KeyCode.L)){
-            OnSecondaryFire();
+        else
+        {
+            shotTimer += Time.deltaTime;
         }
+        
+    }
+
+    public void ChangeShotCooldown(float modifier)
+    {
+        shotDelay *= modifier;
     }
 }
