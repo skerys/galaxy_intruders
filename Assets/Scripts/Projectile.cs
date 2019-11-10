@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : BaseProjectile
 {
     [SerializeField] private float destroyTimer = 1.0f;
-    [SerializeField] private float projectileSpeed = 20;
 
-    private Rigidbody2D rb;
-
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * projectileSpeed;
-        Destroy(this.gameObject, destroyTimer);
+        ResetVelocity();
+        type = ProjectileType.Simple;
+        StartCoroutine(ReclaimAfter(destroyTimer));
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(ReclaimAfter(destroyTimer));
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -26,7 +30,7 @@ public class Projectile : MonoBehaviour
                 Destroy(engine.gameObject);
             }
         }
-        Destroy(this.gameObject);
+        OriginFactory.Reclaim(this);
     }
 
 }

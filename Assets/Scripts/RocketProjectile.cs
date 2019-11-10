@@ -2,38 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketProjectile : MonoBehaviour
+public class RocketProjectile : BaseProjectile
 {
     [SerializeField] private float destroyTimer = 1.0f;
-    [SerializeField] private float projectileSpeed = 20;
     [SerializeField] private float rotationSpeed = 5.0f;
 
-    private Rigidbody2D rb;
     private ShipEngine target;
+
+
 
     private LayerMask layerMask;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * projectileSpeed;
-        //Destroy(this.gameObject, destroyTimer);
+        ResetVelocity();
+        type = ProjectileType.HomingRocket;
+    }
+
+    private void Start()
+    {
         layerMask = ~(1 << gameObject.layer);//getting inverse layer of this
     }
 
     void Update()
     {
         if(!target){
-            var hit = Physics2D.OverlapCircle(transform.position, 3.0f, layerMask);
+            var hit = Physics2D.OverlapCircle(transform.position, 2.0f, layerMask);
             if(hit){
                 target = hit.gameObject.GetComponent<ShipEngine>();
             }
         }else{
             Vector3 vectorToTarget = target.transform.position - transform.position;
-            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90.0f;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * rotationSpeed);
-            rb.velocity = transform.up * projectileSpeed;
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+            ResetVelocity();
         }
     }
 
@@ -47,6 +51,13 @@ public class RocketProjectile : MonoBehaviour
                 Destroy(engine.gameObject);
             }
         }
-        Destroy(this.gameObject);
+        OriginFactory.Reclaim(this);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        if(target)
+        Gizmos.DrawSphere(target.transform.position, 0.5f);
     }
 }

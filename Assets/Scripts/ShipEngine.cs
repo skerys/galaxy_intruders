@@ -16,8 +16,7 @@ public class ShipEngine : MonoBehaviour{
     }
 
     IShipInput input;
-    private Rigidbody2D rb;
-
+ 
     private void Start()
     {
         input = GetComponent<IShipInput>();

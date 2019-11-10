@@ -2,16 +2,16 @@
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    [SerializeField] private GameObject projectilePrefab = default;
+    [SerializeField] private ProjectileFactory factory;
+    [SerializeField] private ProjectileType type;
     [SerializeField] private int projectileLayer;
     [SerializeField] private Vector3 launchOffset;
 
     private IShipInput input;
-    private Collider2D thisCollider;
+    
 
     private void Awake() {
         input = GetComponent<IShipInput>();
-        thisCollider = GetComponent<Collider2D>();
     }
 
     private void OnEnable() {
@@ -23,8 +23,12 @@ public class ProjectileLauncher : MonoBehaviour
     }
 
     private void ShootProjectile(){
-        var projectile = Instantiate(projectilePrefab, transform.position + launchOffset, transform.rotation);
-        projectile.layer = projectileLayer;
+        var projectile = factory.Get(type);
+        projectile.transform.rotation = transform.rotation;
+        projectile.gameObject.layer = projectileLayer;
+        projectile.transform.position = transform.position + launchOffset;
+        projectile.ResetVelocity();
+        
     }
 
     private void OnDrawGizmos()

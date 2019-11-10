@@ -28,7 +28,7 @@ public class EnemyMover : MonoBehaviour
 
     void Start()
     {
-        enemyShips = new List<List<GameObject>>();
+        //enemyShips = new List<List<GameObject>>();
         deltaY = 0;
         deltaX = moveLeft ? -speedX : speedX;
     }
