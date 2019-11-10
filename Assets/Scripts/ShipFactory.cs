@@ -15,6 +15,7 @@ public class ShipFactory : GameObjectFactory<ShipEngine>
 {
     [SerializeField] ShipEngine enemyShipPrefab = default;
     [SerializeField] ShipEngine enemyJetPrefab = default;
+    [SerializeField] ShipEngine playerPrefab = default;
 
 
 
@@ -25,6 +26,7 @@ public class ShipFactory : GameObjectFactory<ShipEngine>
         prefabs.Clear();
         prefabs.Add(enemyShipPrefab);
         prefabs.Add(enemyJetPrefab);
+        prefabs.Add(playerPrefab);
 
     }
 
@@ -43,6 +45,7 @@ public class ShipFactory : GameObjectFactory<ShipEngine>
         {
             case ShipType.EnemyStatic: instance = CreateGameObjectInstance((int)ShipType.EnemyStatic); break;
             case ShipType.EnemyJet: instance = CreateGameObjectInstance((int)ShipType.EnemyJet); break;
+            case ShipType.Player: instance = CreateGameObjectInstance((int)ShipType.Player); break;
             default:
                 Debug.LogError("Ship type " + type + " not found in shipFactory.");
                 return null;

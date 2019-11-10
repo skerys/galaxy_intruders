@@ -14,11 +14,18 @@ public class Game : MonoBehaviour
 
     void Start(){
         enemyShips = new List<List<GameObject>>();
-        GenerateEnemies();
+        CreatePlayer();
+        GenerateEnemiesStageOne();
         GetComponent<EnemyMover>().enemyShips = enemyShips;
     }
 
-    void GenerateEnemies(){
+    void CreatePlayer()
+    {
+        var player = enemyFactory.Get(ShipType.Player);
+        player.transform.position = new Vector3(0, -4, 0);
+    }
+
+    void GenerateEnemiesStageOne(){
         for(int i = 0; i <= 3; i++){
             List<GameObject> shipLine = new List<GameObject>();
             for(int j = -6; j <= 6; j+=2){

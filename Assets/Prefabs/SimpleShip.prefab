@@ -4800,7 +4800,9 @@ GameObject:
   - component: {fileID: 6187691305361913615}
   - component: {fileID: 6187691305361913612}
   - component: {fileID: 6187691305361913602}
-  m_Layer: 0
+  - component: {fileID: 393117364}
+  - component: {fileID: 393117365}
+  m_Layer: 8
   m_Name: SimpleShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4884,7 +4886,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.014256731, y: -0.12831044}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4895,7 +4897,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99, y: 0.82}
+  m_Size: {x: 0.4971244, y: 0.33527136}
   m_EdgeRadius: 0
 --- !u!50 &6187691305361913614
 Rigidbody2D:
@@ -4962,7 +4964,32 @@ MonoBehaviour:
   factory: {fileID: 11400000, guid: 5a3695e590ef90140b64da196251ac88, type: 2}
   type: 0
   projectileLayer: 8
-  launchOffset: {x: 0, y: 0.5, z: 0}
+  launchOffset: {x: 0, y: 0.2, z: 0}
+--- !u!114 &393117364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187691305361913613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebb78178187a9a479779bb888010bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSequence: 00000000
+--- !u!114 &393117365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187691305361913613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f8a8197e917ba428b32a9ceb200143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7458964190352705084
 GameObject:
   m_ObjectHideFlags: 0
