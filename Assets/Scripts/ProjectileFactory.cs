@@ -8,7 +8,8 @@ public enum ProjectileType
     Simple,
     Sine,
     HomingRocket,
-    Bomb
+    Bomb,
+    None
 };
 
 [CreateAssetMenu]

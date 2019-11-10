@@ -31,4 +31,9 @@ public class ShipEngine : MonoBehaviour{
 
     }
 
+    public void ChangeSpeed(float modifier)
+    {
+        moveSpeed *= modifier;
+    }
+
 }
