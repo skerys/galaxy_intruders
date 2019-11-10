@@ -27,7 +27,7 @@ public class RocketProjectile : BaseProjectile
 
     void Update()
     {
-        if(!target){
+        if(!target || !target.gameObject.activeInHierarchy){
             var hit = Physics2D.OverlapCircle(transform.position, 2.0f, layerMask);
             if(hit){
                 target = hit.gameObject.GetComponent<ShipEngine>();

@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 3930011312167392660
     second: sheet_3
+  - first:
+      213: -96796154962138083
+    second: sheet_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -193,7 +196,7 @@ TextureImporter:
         width: 13
         height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,6 +204,27 @@ TextureImporter:
       bones: []
       spriteID: 831a2d54d341e3f44b1d1f91767638b5
       internalID: 3930011312167392660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_4
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 698
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0182262ea5949d246851d336d9d8624e
+      internalID: -96796154962138083
       vertices: []
       indices: 
       edges: []

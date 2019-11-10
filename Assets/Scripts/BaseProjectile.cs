@@ -29,7 +29,7 @@ public class BaseProjectile : MonoBehaviour
 
     public void ResetVelocity()
     {
-        rb.velocity = transform.up * projectileSpeed + transform.right * rb.velocity.x;
+        rb.velocity = transform.up * projectileSpeed;
     }
 
 }

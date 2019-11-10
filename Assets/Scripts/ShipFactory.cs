@@ -13,14 +13,19 @@ public enum ShipType
 [CreateAssetMenu]
 public class ShipFactory : GameObjectFactory<ShipEngine>
 {
-    [SerializeField] ShipEngine enemyShipPrefab;
-    [SerializeField] ShipEngine enemyJetPrefab;
+    [SerializeField] ShipEngine enemyShipPrefab = default;
+    [SerializeField] ShipEngine enemyJetPrefab = default;
 
 
+
+    
 
     public void OnEnable()
     {
+        prefabs.Clear();
         prefabs.Add(enemyShipPrefab);
+        prefabs.Add(enemyJetPrefab);
+
     }
 
 

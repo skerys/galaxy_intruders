@@ -23,6 +23,7 @@ public class ProjectileLauncher : MonoBehaviour
     }
 
     private void ShootProjectile(){
+        Debug.Log(type);
         var projectile = factory.Get(type);
         projectile.transform.rotation = transform.rotation;
         projectile.gameObject.layer = projectileLayer;

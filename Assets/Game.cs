@@ -22,7 +22,7 @@ public class Game : MonoBehaviour
         for(int i = 0; i <= 3; i++){
             List<GameObject> shipLine = new List<GameObject>();
             for(int j = -6; j <= 6; j+=2){
-                var ship = enemyFactory.Get(ShipType.EnemyStatic);
+                var ship = enemyFactory.Get(ShipType.EnemyJet);
                 ship.transform.position = new Vector3(j, i, 0);
                 shipLine.Add(ship.gameObject);
             }

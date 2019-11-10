@@ -7,7 +7,8 @@ public enum ProjectileType
 {
     Simple,
     Sine,
-    HomingRocket
+    HomingRocket,
+    Bomb
 };
 
 [CreateAssetMenu]
@@ -16,12 +17,16 @@ public class ProjectileFactory : GameObjectFactory<BaseProjectile>
     [SerializeField] BaseProjectile simpleProjectile;
     [SerializeField] BaseProjectile sineProjectile;
     [SerializeField] BaseProjectile rocketProjectile;
+    [SerializeField] BaseProjectile bombProjectile;
 
     public void OnEnable()
     {
+        prefabs.Clear();
         prefabs.Add(simpleProjectile);
         prefabs.Add(sineProjectile);
         prefabs.Add(rocketProjectile);
+        prefabs.Add(bombProjectile);
+        Debug.Log("prefabs length: " + prefabs.Count);
     }
 
 
@@ -33,12 +38,15 @@ public class ProjectileFactory : GameObjectFactory<BaseProjectile>
         }
 
         BaseProjectile instance;
+        Debug.Log(type);
 
         switch (type)
         {
             case ProjectileType.Simple: instance = CreateGameObjectInstance(0); break;
             case ProjectileType.Sine: instance = CreateGameObjectInstance(1); break;
             case ProjectileType.HomingRocket: instance = CreateGameObjectInstance(2); break;
+            case ProjectileType.Bomb: instance = CreateGameObjectInstance(3);
+                Debug.Log("wow"); break;
             default:
                 Debug.LogError("Projectile type " + type + " not found in projectileFactory.");
                 return null;

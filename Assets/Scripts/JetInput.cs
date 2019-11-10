@@ -54,7 +54,6 @@ public class JetInput : MonoBehaviour, IShipInput
         if (closestCollider)
         {
             Vector2 hitDirection = (closestCollider.ClosestPoint(transform.position) - (Vector2)transform.position);
-            Debug.Log(hitDirection);
             if(hitDirection.magnitude <= 0.001f)
             {
                 direction = closestCollider.gameObject.transform.position - transform.position;
