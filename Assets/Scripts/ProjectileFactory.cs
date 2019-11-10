@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public enum ProjectileType
 {
     Simple,
+    Sine,
     HomingRocket,
     TypeCount
 };
@@ -14,6 +15,7 @@ public enum ProjectileType
 public class ProjectileFactory : ScriptableObject
 {
     [SerializeField] BaseProjectile simpleProjectile;
+    [SerializeField] BaseProjectile sineProjectile;
     [SerializeField] BaseProjectile rocketProjectile;
 
     [SerializeField] bool recycle;
@@ -91,7 +93,8 @@ public class ProjectileFactory : ScriptableObject
         switch (type)
         {
             case ProjectileType.Simple: return GetProjectile(simpleProjectile, 0);
-            case ProjectileType.HomingRocket: return GetProjectile(rocketProjectile, 1);
+            case ProjectileType.Sine: return GetProjectile(sineProjectile, 1);
+            case ProjectileType.HomingRocket: return GetProjectile(rocketProjectile, 2);
             default:
                 Debug.LogError("Projectile type " + type + " not found in projectileFactory.");
                 return null;

@@ -15,7 +15,7 @@ public class BaseProjectile : MonoBehaviour
         }
     }
 
-    [SerializeField] private float projectileSpeed = 20;
+    [SerializeField] protected float projectileSpeed = 20;
     protected Rigidbody2D rb;
 
     [HideInInspector]
@@ -29,10 +29,7 @@ public class BaseProjectile : MonoBehaviour
 
     public void ResetVelocity()
     {
-        Debug.Log(rb.velocity);
-        Debug.Log(transform.up);
-        Debug.Log(projectileSpeed);
-        rb.velocity = transform.up * projectileSpeed;
+        rb.velocity = transform.up * projectileSpeed + transform.right * rb.velocity.x;
     }
 
 }
