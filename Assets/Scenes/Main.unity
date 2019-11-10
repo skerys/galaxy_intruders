@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce253df9e045fa449bf11c0cdefe1c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 8665270815277784472, guid: 64b397cd8b65cc84098ce1085cddb80e,
+  projectilePrefab: {fileID: 2521501889140317906, guid: 1057805a5e7f9d54783776a868a1cd1b,
     type: 3}
   projectileLayer: 8
   launchOffset: {x: 0, y: 0.45, z: 0}

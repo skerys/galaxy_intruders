@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -3656531271222932061
     second: sheet_2
+  - first:
+      213: 3930011312167392660
+    second: sheet_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -177,6 +180,27 @@ TextureImporter:
       bones: []
       spriteID: 0e5825e2c997121419345da3239d7abf
       internalID: 6530179738444782934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet_3
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 47
+        width: 13
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831a2d54d341e3f44b1d1f91767638b5
+      internalID: 3930011312167392660
       vertices: []
       indices: 
       edges: []
