@@ -3,43 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum ShipType
+{
+    EnemyStatic,
+    EnemyJet,
+    Player
+}
+
 [CreateAssetMenu]
-public class ShipFactory : ScriptableObject
+public class ShipFactory : GameObjectFactory<ShipEngine>
 {
     [SerializeField] ShipEngine enemyShipPrefab;
+    [SerializeField] ShipEngine enemyJetPrefab;
 
-    Scene factoryScene;
 
-    ShipEngine GetShip(ShipEngine prefab){
-        ShipEngine instance = Instantiate(prefab);
-        instance.OriginFactory = this;
-        MoveToFactoryScene(instance.gameObject);
+
+    public void OnEnable()
+    {
+        prefabs.Add(enemyShipPrefab);
+    }
+
+
+    //TODO: Change Get and Reclaim to use Object Pooling
+    public ShipEngine Get(ShipType type)
+    {
+        if(pools == null)
+        {
+            CreatePools();
+        }
+
+        ShipEngine instance;
+
+        switch (type)
+        {
+            case ShipType.EnemyStatic: instance = CreateGameObjectInstance((int)ShipType.EnemyStatic); break;
+            case ShipType.EnemyJet: instance = CreateGameObjectInstance((int)ShipType.EnemyJet); break;
+            default:
+                Debug.LogError("Ship type " + type + " not found in shipFactory.");
+                return null;
+        }
+        if (!instance.OriginFactory)
+            instance.OriginFactory = this;
         return instance;
     }
 
-    void MoveToFactoryScene(GameObject go){
-        if(!factoryScene.isLoaded){
-            if(Application.isEditor){
-                factoryScene = SceneManager.GetSceneByName(name);
-                if(!factoryScene.isLoaded){
-                    factoryScene = SceneManager.CreateScene(name);
-                }
-            }
-            else{
-                factoryScene = SceneManager.CreateScene(name);
-            }
-        }
-        SceneManager.MoveGameObjectToScene(go, factoryScene);
-    }
-
-    //TODO: Change Get and Reclaim to use Object Pooling
-    public ShipEngine Get()
-    {
-        return GetShip(enemyShipPrefab);
-    }
-
     public void Reclaim (ShipEngine ship){
-        Destroy(ship.gameObject);
+        if(pools == null)
+        {
+            CreatePools();
+        }
+        pools[(int)ship.type].Add(ship);
+        ship.gameObject.SetActive(false);
     }
 
 }

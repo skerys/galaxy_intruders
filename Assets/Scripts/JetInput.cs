@@ -17,11 +17,18 @@ public class JetInput : MonoBehaviour, IShipInput
     Vector2 direction;
     Collider2D myCollider;
 
+    [SerializeField] LayerMask hitMask;
+
+    [SerializeField] float minCooldown = 1.0f;
+    [SerializeField] float maxCooldown = 8.0f;
+    float cooldownTimer;
+
+
     private void Start()
     {
         direction = UnityEngine.Random.insideUnitCircle;
         myCollider = GetComponent<Collider2D>();
-                
+        cooldownTimer = UnityEngine.Random.Range(minCooldown, maxCooldown);
     }
 
     private void Update()
@@ -29,12 +36,12 @@ public class JetInput : MonoBehaviour, IShipInput
         Horizontal = direction.x;
         Vertical = direction.y;
 
-        var hit = Physics2D.OverlapCircleAll(transform.position, checkRange, checkMask);
+        var hits = Physics2D.OverlapCircleAll(transform.position, checkRange, checkMask);
 
         Collider2D closestCollider = null;
         float minDistance = Mathf.Infinity;
 
-        foreach(var col in hit)
+        foreach(var col in hits)
         {
             if (col == myCollider) continue ;
             float dist = (col.ClosestPoint(transform.position) - (Vector2)transform.position).magnitude;
@@ -59,5 +66,21 @@ public class JetInput : MonoBehaviour, IShipInput
             }
             direction = direction.normalized;
         }
+
+        cooldownTimer -= Time.deltaTime;
+
+        if (cooldownTimer <= 0.0f)
+        {
+            var hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f, hitMask);
+            if (!hit)
+            {
+                Debug.Log("test");
+                OnPrimaryFire();
+            }
+            cooldownTimer = UnityEngine.Random.Range(minCooldown, maxCooldown);
+        }
+
     }
+
+
 }

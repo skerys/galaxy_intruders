@@ -7,114 +7,55 @@ public enum ProjectileType
 {
     Simple,
     Sine,
-    HomingRocket,
-    TypeCount
+    HomingRocket
 };
 
 [CreateAssetMenu]
-public class ProjectileFactory : ScriptableObject
+public class ProjectileFactory : GameObjectFactory<BaseProjectile>
 {
     [SerializeField] BaseProjectile simpleProjectile;
     [SerializeField] BaseProjectile sineProjectile;
     [SerializeField] BaseProjectile rocketProjectile;
 
-    [SerializeField] bool recycle;
-    List<BaseProjectile>[] pools;
-
-    Scene factoryScene;
-
-    void CreatePools()
+    public void OnEnable()
     {
-        pools = new List<BaseProjectile>[(int)ProjectileType.TypeCount];
-        for(int i = 0; i < (int)ProjectileType.TypeCount; i++)
-        {
-            pools[i] = new List<BaseProjectile>();
-        }
+        prefabs.Add(simpleProjectile);
+        prefabs.Add(sineProjectile);
+        prefabs.Add(rocketProjectile);
     }
 
-    BaseProjectile GetProjectile(BaseProjectile prefab, int poolIndex)
-    {
-        BaseProjectile instance;
-        if (recycle)
-        {
-            List<BaseProjectile> pool = pools[poolIndex];
-            int lastIndex = pool.Count - 1;
-            if(lastIndex >= 0)
-            {
-                instance = pool[lastIndex];
-                pool.RemoveAt(lastIndex);
-            }
-            else
-            {
-                instance = Instantiate(prefab);
-                instance.OriginFactory = this;
-            }
-            instance.gameObject.SetActive(true);
-
-        }
-        else { 
-            instance = Instantiate(prefab);
-            instance.OriginFactory = this;
-        }
-        MoveToFactoryScene(instance.gameObject);
-        return instance;
-        
-    }
-
-    void MoveToFactoryScene(GameObject go)
-    {
-        if (!factoryScene.isLoaded)
-        {
-            if (Application.isEditor)
-            {
-                factoryScene = SceneManager.GetSceneByName(name);
-                if (!factoryScene.isLoaded)
-                {
-                    factoryScene = SceneManager.CreateScene(name);
-                }
-            }
-            else
-            {
-                factoryScene = SceneManager.CreateScene(name);
-            }
-        }
-        SceneManager.MoveGameObjectToScene(go, factoryScene);
-    }
 
     public BaseProjectile Get(ProjectileType type)
     {
-        if (recycle)
+        if(pools == null)
         {
-            if(pools == null)
-            {
-                CreatePools();
-            }
+            CreatePools();
         }
+
+        BaseProjectile instance;
+
         switch (type)
         {
-            case ProjectileType.Simple: return GetProjectile(simpleProjectile, 0);
-            case ProjectileType.Sine: return GetProjectile(sineProjectile, 1);
-            case ProjectileType.HomingRocket: return GetProjectile(rocketProjectile, 2);
+            case ProjectileType.Simple: instance = CreateGameObjectInstance(0); break;
+            case ProjectileType.Sine: instance = CreateGameObjectInstance(1); break;
+            case ProjectileType.HomingRocket: instance = CreateGameObjectInstance(2); break;
             default:
                 Debug.LogError("Projectile type " + type + " not found in projectileFactory.");
                 return null;
         }
+        if(!instance.OriginFactory)
+            instance.OriginFactory = this;
+        return instance;
     }
 
     public void Reclaim(BaseProjectile proj)
     {
-        if (recycle)
+        if(pools == null)
         {
-            if(pools == null)
-            {
-                CreatePools();
-            }
-            pools[(int)proj.type].Add(proj);
-            proj.gameObject.SetActive(false);
+            CreatePools();
         }
-        else
-        {
-            Destroy(proj.gameObject);
-        }
+        pools[(int)proj.type].Add(proj);
+        proj.gameObject.SetActive(false);
+        
     }
 }

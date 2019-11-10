@@ -9,12 +9,14 @@ public class SineProjectile : BaseProjectile
     [SerializeField] private float amplitudeModifier = 10.0f;
 
     private float sinTimer;
+    private TrailRenderer tr;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        tr = GetComponent<TrailRenderer>();
         ResetVelocity();
-        type = ProjectileType.Simple;
+        type = ProjectileType.Sine;
         StartCoroutine(ReclaimAfter(destroyTimer));
         sinTimer = 0.0f;
     }
@@ -22,7 +24,12 @@ public class SineProjectile : BaseProjectile
     private void OnEnable()
     {
         StartCoroutine(ReclaimAfter(destroyTimer));
+        
+    }
 
+    private void OnDisable()
+    {
+        tr.Clear();
     }
 
     private void Update()
