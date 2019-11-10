@@ -45,7 +45,7 @@ public class SineProjectile : BaseProjectile
         {
             if (engine.OriginFactory)
             {
-                engine.OriginFactory.Reclaim(engine);
+                engine.Kill();
             }
             else
             {

@@ -136,3 +136,5 @@ MonoBehaviour:
   type: 0
   destroyTimer: 5
   explosionRadius: 1.5
+  bombExplosion: {fileID: 8235887170823201198, guid: 1833b4257bdd6f442907d4e54f142580,
+    type: 3}

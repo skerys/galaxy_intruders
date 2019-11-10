@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipEngine : MonoBehaviour{
 
     [SerializeField] float moveSpeed = 5.0f;
+    [SerializeField] GameObject explosionEffect;
     public ShipType type;
 
     private ShipFactory originFactory;
@@ -34,6 +35,12 @@ public class ShipEngine : MonoBehaviour{
     public void ChangeSpeed(float modifier)
     {
         moveSpeed *= modifier;
+    }
+
+    public void Kill()
+    {
+        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        originFactory.Reclaim(this);
     }
 
 }

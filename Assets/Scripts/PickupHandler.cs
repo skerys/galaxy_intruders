@@ -38,6 +38,7 @@ public class PickupHandler : MonoBehaviour
                     break;
                 }
             }
+            Destroy(pickup.gameObject);
         }
     }
 }

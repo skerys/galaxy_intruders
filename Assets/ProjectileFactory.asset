@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373c1b3b0ccc3f1438a50cb6849ae322, type: 3}
   m_Name: ProjectileFactory
   m_EditorClassIdentifier: 
-  simpleProjectile: {fileID: 0}
-  sineProjectile: {fileID: 0}
-  rocketProjectile: {fileID: 0}
-  bombProjectile: {fileID: 0}
+  simpleProjectile: {fileID: 3632622467398324428, guid: 64b397cd8b65cc84098ce1085cddb80e,
+    type: 3}
+  sineProjectile: {fileID: 7044200363412070946, guid: 20ed7e69f7f491441a6cde1edf234854,
+    type: 3}
+  rocketProjectile: {fileID: 2521501889140317907, guid: 1057805a5e7f9d54783776a868a1cd1b,
+    type: 3}
+  bombProjectile: {fileID: 2234793211630618757, guid: 2ece7bb9f3c783f4f9ab6f1f7da4ef21,
+    type: 3}

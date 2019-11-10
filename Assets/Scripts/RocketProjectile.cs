@@ -46,7 +46,7 @@ public class RocketProjectile : BaseProjectile
         ShipEngine engine = other.gameObject.GetComponent<ShipEngine>();
         if(engine){
             if(engine.OriginFactory){
-                engine.OriginFactory.Reclaim(engine);
+                engine.Kill();
             }else{
                 Destroy(engine.gameObject);
             }

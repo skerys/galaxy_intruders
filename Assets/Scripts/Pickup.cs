@@ -12,7 +12,7 @@ public enum PickupType
 public class Pickup : MonoBehaviour
 {
     [SerializeField] public PickupType pickupType;
-    [SerializeField] public float fallSpeed;
+    [SerializeField] public float fallSpeed = 1f;
 
     [SerializeField] public float value;
     [SerializeField] public ProjectileType projectileType;

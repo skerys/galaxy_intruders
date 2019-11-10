@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyShipPrefab: {fileID: 5231524474374775004, guid: cf6bee5fcfe077345b3abdbc672baf6f,
     type: 3}
+  enemyJetPrefab: {fileID: 1432670668910919856, guid: ba5f31a6500d2ac409ba15e5cc0bbe50,
+    type: 3}

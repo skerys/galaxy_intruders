@@ -6,6 +6,7 @@ public class BombProjectile : BaseProjectile
 {
     [SerializeField] float destroyTimer = 3.0f;
     [SerializeField] float explosionRadius = 1.0f;
+    [SerializeField] GameObject bombExplosion;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class BombProjectile : BaseProjectile
     private void DoExplosion()
     {
         var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        Instantiate(bombExplosion, transform.position, Quaternion.identity);
         foreach(var hit in hits)
         {
             ShipEngine engine = hit.gameObject.GetComponent<ShipEngine>();
@@ -24,7 +26,7 @@ public class BombProjectile : BaseProjectile
             {
                 if (engine.OriginFactory)
                 {
-                    engine.OriginFactory.Reclaim(engine);
+                    engine.Kill();
                 }
                 else
                 {
@@ -43,7 +45,7 @@ public class BombProjectile : BaseProjectile
         {
             if (engine.OriginFactory)
             {
-                engine.OriginFactory.Reclaim(engine);
+                engine.Kill();
             }
             else
             {

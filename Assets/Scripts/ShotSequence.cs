@@ -34,8 +34,8 @@ public class ShotSequence : MonoBehaviour
     {
         input = GetComponent<ShipInput>();
         launcher = GetComponent<ProjectileLauncher>();
-        projectileSequence = new List<ProjectileType>();
-        projectileSequence.Add(ProjectileType.Simple);
+        //projectileSequence = new List<ProjectileType>();
+        //projectileSequence.Add(ProjectileType.Simple);
     }
 
     public void AddToSequence(ProjectileType type)
