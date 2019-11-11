@@ -20,13 +20,14 @@ public class BombProjectile : BaseProjectile
         SoundManager.Instance.PlayShootBomb();
     }
 
-    private void DoExplosion()
+    private void DoExplosion(Collision2D firstHit)
     {
         SoundManager.Instance.PlayExplosion();
         var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         Instantiate(bombExplosion, transform.position, Quaternion.identity);
         foreach(var hit in hits)
         {
+            if (hit == firstHit.collider) continue;
             ShipEngine engine = hit.gameObject.GetComponent<ShipEngine>();
             if (engine)
             {
@@ -43,7 +44,7 @@ public class BombProjectile : BaseProjectile
         if (engine)
         {
             engine.Kill();
-            DoExplosion();
+            DoExplosion(collision);
         }
         OriginFactory.Reclaim(this);
     }
