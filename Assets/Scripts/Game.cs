@@ -5,17 +5,23 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     [SerializeField] private ShipFactory enemyFactory;
-    [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private ShipEngine bossPrefab;
     [SerializeField] float shipSpawnOffset = 10.0f;
     [SerializeField] GameObject jetBounds;
 
-    
+    [SerializeField] GameObject pulseEffect;
+    [SerializeField] GameObject warningText;
+    [SerializeField] GameObject enemiesInboundText;
+    [SerializeField] GameObject selfDestructEffect;
+    [SerializeField] GameObject selfDestructEffect2;
+
+
     private List<List<GameObject>> enemyShips;
     private EnemyMover mover;
     private RetryHandler retryHandler;
 
     
-    private GameObject boss;
+    private ShipEngine boss;
     private ShipEngine player;
 
     private int currentStage = 1;
@@ -69,6 +75,7 @@ public class Game : MonoBehaviour
 
     void SuspendShips()
     {
+        enemiesInboundText.SetActive(true);
         if (currentStage == 3) boss.GetComponent<IShipInput>().SetEnabled(false);
         if (currentStage == 1) mover.enabled = false;
         jetBounds.SetActive(false);
@@ -86,6 +93,7 @@ public class Game : MonoBehaviour
 
     void EnableShips()
     {
+        enemiesInboundText.SetActive(false);
         if (currentStage == 3) boss.GetComponent<IShipInput>().SetEnabled(true);
         if (currentStage == 1) mover.enabled = true;
         jetBounds.SetActive(true);
@@ -125,6 +133,53 @@ public class Game : MonoBehaviour
         boss = Instantiate(bossPrefab, new Vector3(bossPrefab.transform.position.x, bossPrefab.transform.position.y + shipSpawnOffset, 0.0f), bossPrefab.transform.rotation);
         currentStage++;
     }
+
+    void InitiateBossEnding()
+    {
+        currentStage++;
+        pulseEffect.SetActive(true);
+        player.GetComponent<ShipInput>().canShoot = false;
+        StartCoroutine(EnableAfterTime(warningText, 0.5f));
+        boss.enabled = false;
+    }
+
+    void InitiateSelfDestructSequence()
+    {
+        currentStage++;
+        boss.enabled = false;
+        warningText.SetActive(false);
+        player.GetComponent<ShipInput>().enabled = false;
+        Instantiate(selfDestructEffect, player.transform.position, Quaternion.identity);
+        StartCoroutine(EnableAfterTime(Instantiate(selfDestructEffect2, player.transform.position, Quaternion.identity), 2.0f));
+        StartCoroutine(KillBossAfterTime(4.5f));
+        StartCoroutine(KillAppAfterTime(10.0f));
+
+    }
+
+    IEnumerator EnableAfterTime(GameObject go, float t)
+    {
+        yield return new WaitForSeconds(t);
+        go.SetActive(true);
+    }
+
+    IEnumerator KillBossAfterTime(float t)
+    {
+        yield return new WaitForSeconds(t);
+        boss.Kill();
+    }
+
+    IEnumerator KillAppAfterTime(float t)
+    {
+        yield return new WaitForSeconds(t);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+    }
+
+
 
     private void Update()
     {
@@ -187,10 +242,22 @@ public class Game : MonoBehaviour
 
             if(currentStage == 3)
             {
+                if(boss.GetHealth()  <= 1.0f)
+                {
+                    player.enabled = false;
+                    InitiateBossEnding();
+                }
                 if (!boss)
                 {
                     Debug.Log("GameOver, you win");
                     retryHandler.currentState = GameState.Win;
+                }
+            }
+            if(currentStage == 4)
+            {
+                if (Input.GetKey(KeyCode.L))
+                {
+                    InitiateSelfDestructSequence();
                 }
             }
         }

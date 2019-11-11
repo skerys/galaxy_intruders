@@ -8,6 +8,11 @@ public abstract class GameObjectFactory<T> : ScriptableObject where T : MonoBeha
     protected List<T>[] pools;
     protected List<T> prefabs;
 
+    private void Awake()
+    {
+        prefabs = new List<T>();
+    }
+
     protected T CreateGameObjectInstance (int index)
     {
         T instance;

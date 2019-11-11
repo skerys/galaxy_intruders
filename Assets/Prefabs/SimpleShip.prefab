@@ -5357,6 +5357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotDelay: 1
+  canShoot: 1
 --- !u!114 &6187691305361913612
 MonoBehaviour:
   m_ObjectHideFlags: 0
