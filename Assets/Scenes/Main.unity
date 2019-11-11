@@ -1442,6 +1442,8 @@ MonoBehaviour:
   enemyFactory: {fileID: 11400000, guid: c6ab2fb2fa2b679448d05e94a1eb6493, type: 2}
   bossPrefab: {fileID: 255474045804759750, guid: be893fc5935dd014f8e13d2d5d802fec,
     type: 3}
+  shipSpawnOffset: 10
+  jetBounds: {fileID: 1708689034}
 --- !u!4 &1656503494
 Transform:
   m_ObjectHideFlags: 0
