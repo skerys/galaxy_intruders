@@ -5,4 +5,6 @@ public interface IShipInput{
     float Vertical{get; set;}
 
     event Action OnPrimaryFire;
+
+    void SetEnabled(bool status);
 }

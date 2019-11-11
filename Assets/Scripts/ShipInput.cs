@@ -12,6 +12,11 @@ public class ShipInput : MonoBehaviour,  IShipInput
     [SerializeField] private float shotDelay = 1.0f;
     private float shotTimer = 0.0f;
 
+    public void SetEnabled(bool status)
+    {
+        enabled = status;
+    }
+
     void Update()
     {
         Horizontal = Input.GetAxis("Horizontal");

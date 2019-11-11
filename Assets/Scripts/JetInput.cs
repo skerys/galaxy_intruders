@@ -31,6 +31,10 @@ public class JetInput : MonoBehaviour, IShipInput
         cooldownTimer = UnityEngine.Random.Range(minCooldown, maxCooldown);
     }
 
+    public void SetEnabled(bool status)
+    {
+        enabled = status;
+    }
     private void Update()
     {
         Horizontal = direction.x;

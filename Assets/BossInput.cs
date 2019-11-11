@@ -34,6 +34,11 @@ public class BossInput : MonoBehaviour, IShipInput
 
     }
 
+    public void SetEnabled(bool status)
+    {
+        enabled = status;
+    }
+
     void Update()
     {
         if(patternChangeTimer >= patternChangeDelay)

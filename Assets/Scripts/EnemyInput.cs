@@ -20,6 +20,10 @@ public class EnemyInput : MonoBehaviour, IShipInput
         cooldownTimer = UnityEngine.Random.Range(minCooldown, maxCooldown);
     }
 
+    public void SetEnabled(bool status)
+    {
+        enabled = status;
+    }
     private void Update()
     {
         cooldownTimer -= Time.deltaTime;
