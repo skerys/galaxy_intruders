@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ShotSequence : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class ShotSequence : MonoBehaviour
     [SerializeField]
     private List<ProjectileType> projectileSequence = new List<ProjectileType>();
     private int currentIndex = 0;
+
+    [HideInInspector]
+    public event Action ShotSequenceUpdated = delegate { };
+    [HideInInspector]
+    public event Action ShotSequecteCurrentChanged = delegate { };
 
     private void OnEnable()
     {
@@ -23,11 +29,12 @@ public class ShotSequence : MonoBehaviour
 
     private void CycleSequence()
     {
+
         currentIndex++;
         if (currentIndex >= projectileSequence.Count)
             currentIndex = 0;
-
         launcher.type = projectileSequence[currentIndex];
+        ShotSequecteCurrentChanged();
     }
 
     private void Awake()
@@ -41,5 +48,17 @@ public class ShotSequence : MonoBehaviour
     public void AddToSequence(ProjectileType type)
     {
         projectileSequence.Add(type);
+        ShotSequenceUpdated();
+        ShotSequecteCurrentChanged();
+    }
+
+    public List<ProjectileType> GetSequence()
+    {
+        return projectileSequence;
+    }
+
+    public int GetCurrentIndex()
+    {
+        return currentIndex;
     }
 }
