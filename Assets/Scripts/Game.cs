@@ -30,7 +30,6 @@ public class Game : MonoBehaviour
     private float moveDownAmount = 0.0f;
 
     void Start(){
-        Debug.Log("yeet");
         enemyShips = new List<List<GameObject>>();
         retryHandler = GetComponent<RetryHandler>();
         mover = GetComponent<EnemyMover>();
@@ -46,9 +45,9 @@ public class Game : MonoBehaviour
     }
 
     void GenerateEnemiesStageOne(){
-        for(int i = 0; i <= 2; i++){
+        for(int i = 0; i <= 3; i++){
             List<GameObject> shipLine = new List<GameObject>();
-            for(int j = -4; j <= 4; j+=2){
+            for(int j =-6; j <= 6; j+=2){
                 var ship = enemyFactory.Get(ShipType.EnemyStatic);
                 ship.transform.position = new Vector3(j, i + shipSpawnOffset, 0);
                 shipLine.Add(ship.gameObject);
@@ -136,23 +135,24 @@ public class Game : MonoBehaviour
 
     void InitiateBossEnding()
     {
+        player.canDie = false;
+        boss.canDie = false;
+        player.gameObject.layer = gameObject.layer;
         currentStage++;
         pulseEffect.SetActive(true);
         player.GetComponent<ShipInput>().canShoot = false;
         StartCoroutine(EnableAfterTime(warningText, 0.5f));
-        boss.enabled = false;
     }
 
     void InitiateSelfDestructSequence()
     {
         currentStage++;
-        boss.enabled = false;
         warningText.SetActive(false);
         player.GetComponent<ShipInput>().enabled = false;
         Instantiate(selfDestructEffect, player.transform.position, Quaternion.identity);
         StartCoroutine(EnableAfterTime(Instantiate(selfDestructEffect2, player.transform.position, Quaternion.identity), 2.0f));
         StartCoroutine(KillBossAfterTime(4.5f));
-        StartCoroutine(KillAppAfterTime(10.0f));
+        StartCoroutine(KillAppAfterTime(8.0f));
 
     }
 
@@ -165,6 +165,7 @@ public class Game : MonoBehaviour
     IEnumerator KillBossAfterTime(float t)
     {
         yield return new WaitForSeconds(t);
+        boss.canDie = true;
         boss.Kill();
     }
 
@@ -244,8 +245,10 @@ public class Game : MonoBehaviour
             {
                 if(boss.GetHealth()  <= 1.0f)
                 {
-                    player.enabled = false;
-                    InitiateBossEnding();
+                    if (player.enabled)
+                    {
+                        InitiateBossEnding();
+                    }
                 }
                 if (!boss)
                 {

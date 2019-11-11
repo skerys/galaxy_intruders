@@ -8,6 +8,9 @@ public class ShipEngine : MonoBehaviour{
     [SerializeField] GameObject explosionEffect;
     [SerializeField] int health = 1;
     public ShipType type;
+    [HideInInspector]
+    public bool canDie = true;
+
 
     private ShipFactory originFactory;
     public ShipFactory OriginFactory{
@@ -18,11 +21,14 @@ public class ShipEngine : MonoBehaviour{
         }
     }
 
+    PickupDropper dropper;
     IShipInput input;
  
     private void Start()
     {
         input = GetComponent<IShipInput>();
+        dropper = GetComponent<PickupDropper>();
+        canDie = true;
     }
 
     private void FixedUpdate(){
@@ -41,17 +47,19 @@ public class ShipEngine : MonoBehaviour{
     public void Kill()
     {
         health--;
-        if(health <= 0)
+        if(health <= 0 && canDie)
         {
             if(explosionEffect) Instantiate(explosionEffect, transform.position, Quaternion.identity);
             if (originFactory)
             {
+      
                 originFactory.Reclaim(this);
             }
             else
             {
                 Destroy(this.gameObject);
             }
+            if (dropper) dropper.DropPickup();
             SoundManager.Instance.PlayExplosion();
         }
         

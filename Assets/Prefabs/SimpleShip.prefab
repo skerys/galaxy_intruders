@@ -5375,6 +5375,7 @@ MonoBehaviour:
     type: 3}
   health: 1
   type: 2
+  canDie: 0
 --- !u!114 &6187691305361913602
 MonoBehaviour:
   m_ObjectHideFlags: 0

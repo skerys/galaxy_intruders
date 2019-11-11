@@ -11,14 +11,13 @@ public class PickupDropper : MonoBehaviour
 
 
     // Update is called once per frame
-    private void OnDisable()
+    public void DropPickup()
     {
-        if (Application.isPlaying)
+
+        if (Random.Range(0.0f, 1.0f) <= dropChance)
         {
-            if(Random.Range(0.0f, 1.0f) <= dropChance)
-            {
-                Instantiate(pickups.ChoosePickup(), transform.position, Quaternion.identity);
-            }
+            Instantiate(pickups.ChoosePickup(), transform.position, Quaternion.identity);
         }
+          
     }
 }

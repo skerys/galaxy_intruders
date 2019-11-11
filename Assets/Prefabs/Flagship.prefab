@@ -351,8 +351,9 @@ MonoBehaviour:
   moveSpeed: 2
   explosionEffect: {fileID: 3220361530387199213, guid: 8142897bc1060844680d47e30df57456,
     type: 3}
-  health: 15
+  health: 50
   type: 0
+  canDie: 0
 --- !u!114 &255474045804759748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34854,7 +34855,7 @@ RectTransform:
   m_GameObject: {fileID: 1599208958372289370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 2, z: 1}
   m_Children:
   - {fileID: 4949701294784848655}
   - {fileID: 7963121892780611639}
@@ -34863,8 +34864,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 459.8, y: 20}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &7337375973975519929
 MonoBehaviour:
@@ -35061,11 +35062,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96

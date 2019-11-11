@@ -147,6 +147,8 @@ MonoBehaviour:
   type: 0
   destroyTimer: 2
   rotationSpeed: 5
+  smallExplosion: {fileID: 3220361530387199213, guid: 86a5c60322e67e44cba869b6ac39ffc1,
+    type: 3}
   enemyMask:
     serializedVersion: 2
     m_Bits: 512

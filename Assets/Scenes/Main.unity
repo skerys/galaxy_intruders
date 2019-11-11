@@ -419,7 +419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -187, y: 11}
+  m_AnchoredPosition: {x: -187, y: -2.6000004}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316912336
@@ -818,7 +818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 105, y: 150}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &722409802
@@ -853,7 +853,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: enemies inbound
+  m_text: 'enemies inbound
+
+    warming up weapons'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91dfd9df02b33e9419f69db1e5759289, type: 2}
   m_sharedMaterial: {fileID: -6933216548804046346, guid: 91dfd9df02b33e9419f69db1e5759289,
@@ -899,7 +901,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 16
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -923,12 +925,12 @@ MonoBehaviour:
   m_margin: {x: 62.59491, y: 0, z: -141.60815, w: 0}
   m_textInfo:
     textComponent: {fileID: 722409803}
-    characterCount: 15
+    characterCount: 34
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 4
+    wordCount: 5
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1075,11 +1077,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1566,105 +1568,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1001 &1316960259
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 255474045804759750, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_Name
-      value: Flagship
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 255474045804759795, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4377282876098016886, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4377282876098016886, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4377282876098016886, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4377282876098016886, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3912579416509407841, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3912579416509407841, guid: be893fc5935dd014f8e13d2d5d802fec,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: be893fc5935dd014f8e13d2d5d802fec, type: 3}
 --- !u!1 &1351444078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9062990386822950579, guid: 315bdf7c32239e940bca6b7ee857224c,
@@ -1994,7 +1897,7 @@ GameObject:
   - component: {fileID: 1656503493}
   - component: {fileID: 1656503495}
   - component: {fileID: 1656503496}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2194,7 +2097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 4, y: 180}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1790963602

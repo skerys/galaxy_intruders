@@ -18,8 +18,6 @@ public abstract class GameObjectFactory<T> : ScriptableObject where T : MonoBeha
         T instance;
         List<T> pool = pools[index];
         int lastIndex = pool.Count - 1;
-        Debug.Log(lastIndex);
-        Debug.Log(pool);
         if(lastIndex >= 0)
         {
             instance = pool[lastIndex];

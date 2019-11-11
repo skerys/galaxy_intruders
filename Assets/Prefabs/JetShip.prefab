@@ -128,7 +128,9 @@ MonoBehaviour:
   moveSpeed: 3
   explosionEffect: {fileID: 3220361530387199213, guid: 0857caf93567b224cb41cc0e60466ed0,
     type: 3}
+  health: 1
   type: 1
+  canDie: 0
 --- !u!114 &1432670668910919859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +147,7 @@ MonoBehaviour:
   type: 1
   projectileLayer: 13
   launchOffset: {x: 0, y: -0.45, z: 0}
+  childOfEngine: 0
 --- !u!50 &1432670668910919861
 Rigidbody2D:
   serializedVersion: 4
@@ -200,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickups: {fileID: 11400000, guid: f9509da5184027a4681ab4abfe2f6a08, type: 2}
-  dropChance: 0.4
+  dropChance: 0.3
 --- !u!1 &6128250237333872885
 GameObject:
   m_ObjectHideFlags: 0

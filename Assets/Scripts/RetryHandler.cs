@@ -41,7 +41,7 @@ public class RetryHandler : MonoBehaviour
             {
                 shipFactory.Unload();
                 projectileFactory.Unload();
-                SceneManager.LoadScene(0);
+                Application.Quit();
             }
         }
     }

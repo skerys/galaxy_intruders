@@ -29,7 +29,7 @@ public class ShipInput : MonoBehaviour,  IShipInput
         {
             if(shotTimer >= shotDelay)
             {
-                if(Input.GetKey(KeyCode.K)){
+                if(Input.GetKey(KeyCode.Space)){
                     OnPrimaryFire();
                     shotTimer = 0.0f;
                 }

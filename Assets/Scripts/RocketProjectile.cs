@@ -6,6 +6,7 @@ public class RocketProjectile : BaseProjectile
 {
     [SerializeField] private float destroyTimer = 1.0f;
     [SerializeField] private float rotationSpeed = 5.0f;
+    [SerializeField] private GameObject smallExplosion;
 
     private ShipEngine target;
 
@@ -47,6 +48,7 @@ public class RocketProjectile : BaseProjectile
         if(engine){
             engine.Kill();
         }
+        Instantiate(smallExplosion, transform.position, Quaternion.identity);
         OriginFactory.Reclaim(this);
     }
 

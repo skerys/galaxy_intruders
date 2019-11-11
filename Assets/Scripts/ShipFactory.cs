@@ -19,10 +19,11 @@ public class ShipFactory : GameObjectFactory<ShipEngine>
 
 
 
-    
+
 
     public void OnEnable()
     {
+        
         prefabs.Clear();
         prefabs.Add(enemyShipPrefab);
         prefabs.Add(enemyJetPrefab);
