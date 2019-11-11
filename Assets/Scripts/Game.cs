@@ -9,17 +9,17 @@ public class Game : MonoBehaviour
 
     
     private List<List<GameObject>> enemyShips;
+    private EnemyMover mover;
+    private GameObject boss;
 
-    float deltaX;
-    float deltaY;
+    private int currentStage = 1;
 
-    int stageId = 1;
 
     void Start(){
         enemyShips = new List<List<GameObject>>();
+        mover = GetComponent<EnemyMover>();
         CreatePlayer();
-        GenerateEnemiesStageOne();
-        GetComponent<EnemyMover>().enemyShips = enemyShips;
+        InitiateStageOne();
     }
 
     void CreatePlayer()
@@ -61,25 +61,60 @@ public class Game : MonoBehaviour
         Instantiate(bossPrefab);
     }
 
+    void InitiateStageOne()
+    {
+        GenerateEnemiesStageOne();
+        mover.enemyShips = enemyShips;
+    }
+
+    void EndStageOne()
+    {
+        mover.enabled = false;
+    }
+
+    void InitiateStageTwo()
+    {
+        GenerateEnemiesStageTwo();
+        currentStage++;
+    }
+
+    void InitiateBossStage()
+    {
+        Instantiate(bossPrefab);
+        currentStage++;
+    }
+
     private void Update()
     {
-        foreach(var shipLine in enemyShips)
-        {
-            foreach(var ship in shipLine)
+        if(currentStage <= 2)
+        { 
+            foreach(var shipLine in enemyShips)
             {
-                if (ship.activeSelf) return;
+                foreach(var ship in shipLine)
+                {
+                    if (ship.activeSelf) return;
+                }
             }
         }
         enemyShips.Clear();
-        if (stageId == 1)
+        if (currentStage == 1)
         {
-            GenerateEnemiesStageTwo();
-            stageId++;
+            EndStageOne();
+            InitiateStageTwo();
+            
         }
-        else if(stageId == 2)
+        else if(currentStage == 2)
         {
-            GenerateBoss();
-            stageId++;
+            InitiateBossStage();
+            
+        }
+
+        if(currentStage == 3)
+        {
+            if (!boss)
+            {
+                Debug.Log("GameOver, you win");
+            }
         }
     }
 
