@@ -15,8 +15,14 @@ public class BombProjectile : BaseProjectile
         type = ProjectileType.Bomb;
     }
 
+    private void OnEnable()
+    { 
+        SoundManager.Instance.PlayShootBomb();
+    }
+
     private void DoExplosion()
     {
+        SoundManager.Instance.PlayExplosion();
         var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         Instantiate(bombExplosion, transform.position, Quaternion.identity);
         foreach(var hit in hits)

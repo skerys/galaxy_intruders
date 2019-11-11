@@ -20,6 +20,11 @@ public class RocketProjectile : BaseProjectile
         type = ProjectileType.HomingRocket;
     }
 
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlayShootMissile();
+    }
+
     void Update()
     {
         if(!target || !target.gameObject.activeInHierarchy){

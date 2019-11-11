@@ -17,6 +17,7 @@ public class Projectile : BaseProjectile
     private void OnEnable()
     {
         StartCoroutine(ReclaimAfter(destroyTimer));
+        SoundManager.Instance.PlayShootSimple();
 
     }
 

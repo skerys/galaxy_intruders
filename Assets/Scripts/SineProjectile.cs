@@ -24,9 +24,9 @@ public class SineProjectile : BaseProjectile
     private void OnEnable()
     {
         StartCoroutine(ReclaimAfter(destroyTimer));
-        
+        SoundManager.Instance.PlayShootSine();
     }
-
+    
     private void OnDisable()
     {
         tr.Clear();

@@ -52,6 +52,7 @@ public class ShipEngine : MonoBehaviour{
             {
                 Destroy(this.gameObject);
             }
+            SoundManager.Instance.PlayExplosion();
         }
         
     }
