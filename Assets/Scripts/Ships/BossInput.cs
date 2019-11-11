@@ -122,12 +122,11 @@ public class BossInput : MonoBehaviour, IShipInput
         var rand = new System.Random();
         var selectedTrishots = new List<GameObject>();
 
-        //Select two random trishots
-        for(int i = 0; i < 2; i++)
-        {
-            var index = rand.Next(triShotGroups.Count);
-            selectedTrishots.Add(triShotGroups[index]);
-        }
+        //Select one random trishot
+       
+        var index = rand.Next(triShotGroups.Count);
+        selectedTrishots.Add(triShotGroups[index]);
+        
 
         foreach(var trishot in selectedTrishots)
         {

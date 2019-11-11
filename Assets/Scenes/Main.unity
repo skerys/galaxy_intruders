@@ -284,7 +284,7 @@ MonoBehaviour:
 
     press r to retry
 
-    press q to return to main menu'
+    press q to quit the game'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 91dfd9df02b33e9419f69db1e5759289, type: 2}
   m_sharedMaterial: {fileID: -6933216548804046346, guid: 91dfd9df02b33e9419f69db1e5759289,
