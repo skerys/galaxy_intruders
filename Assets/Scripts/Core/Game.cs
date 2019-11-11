@@ -45,9 +45,9 @@ public class Game : MonoBehaviour
     }
 
     void GenerateEnemiesStageOne(){
-        for(int i = 0; i <= 3; i++){
+        for(int i = 0; i <= 0; i++){
             List<GameObject> shipLine = new List<GameObject>();
-            for(int j =-6; j <= 6; j+=2){
+            for(int j =-0; j <= 0; j+=2){
                 var ship = enemyFactory.Get(ShipType.EnemyStatic);
                 ship.transform.position = new Vector3(j, i + shipSpawnOffset, 0);
                 shipLine.Add(ship.gameObject);
@@ -58,10 +58,10 @@ public class Game : MonoBehaviour
 
     void GenerateEnemiesStageTwo()
     {
-        for (int i = 0; i <= 2; i++)
+        for (int i = 0; i <= 0; i++)
         {
             List<GameObject> shipLine = new List<GameObject>();
-            for (int j = -4; j <= 4; j += 2)
+            for (int j = -0; j <= 0; j += 2)
             {
                 var ship = enemyFactory.Get(ShipType.EnemyJet);
                 ship.transform.position = new Vector3(j, i + shipSpawnOffset, 0);

@@ -351,7 +351,7 @@ MonoBehaviour:
   moveSpeed: 2
   explosionEffect: {fileID: 3220361530387199213, guid: 8142897bc1060844680d47e30df57456,
     type: 3}
-  health: 50
+  health: 3
   type: 0
   canDie: 0
 --- !u!114 &255474045804759748
