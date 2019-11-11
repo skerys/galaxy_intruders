@@ -24,7 +24,6 @@ public class ProjectileLauncher : MonoBehaviour
     }
 
     private void OnEnable() {
-        Debug.Log(input);
         input.OnPrimaryFire += ShootProjectile;
     }
     

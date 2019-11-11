@@ -57,4 +57,9 @@ public class ShipEngine : MonoBehaviour{
         
     }
 
+    public int GetHealth()
+    {
+        return health;
+    }
+
 }

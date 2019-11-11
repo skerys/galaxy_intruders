@@ -58,7 +58,7 @@ public class EnemyMover : MonoBehaviour
             }
             if(!currentLineMoved){
                 for(int i = enemyShips[currentLineIndex].Count - 1; i >= 0; i--){
-                    if(enemyShips[currentLineIndex][i]){
+                    if(enemyShips[currentLineIndex][i].activeSelf){
                         enemyShips[currentLineIndex][i].transform.Translate(new Vector3(deltaX, deltaY, 0), Space.World);
                     }else{
                         enemyShips[currentLineIndex].RemoveAt(i);

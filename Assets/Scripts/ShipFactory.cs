@@ -30,6 +30,30 @@ public class ShipFactory : GameObjectFactory<ShipEngine>
 
     }
 
+    protected void CreatePools()
+    {
+        scene = SceneManager.GetSceneByName(name);
+        if (scene.isLoaded)
+        {
+            GameObject[] rootObjects = scene.GetRootGameObjects();
+            for (int i = 0; i < rootObjects.Length; i++)
+            {
+                ShipEngine pooledItem = rootObjects[i].GetComponent<ShipEngine>();
+                if (!pooledItem.gameObject.activeSelf)
+                {
+                    pools[(int)pooledItem.type].Add(pooledItem);
+                }
+            }
+            return;
+        }
+
+        pools = new List<ShipEngine>[prefabs.Count];
+        for (int i = 0; i < prefabs.Count; i++)
+        {
+            pools[i] = new List<ShipEngine>();
+        }
+    }
+
 
     //TODO: Change Get and Reclaim to use Object Pooling
     public ShipEngine Get(ShipType type)

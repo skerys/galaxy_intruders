@@ -4,24 +4,17 @@ using System.Collections.Generic;
 
 public abstract class GameObjectFactory<T> : ScriptableObject where T : MonoBehaviour
 {
-    Scene scene;
+    protected Scene scene;
     protected List<T>[] pools;
     protected List<T> prefabs;
-
-    protected void CreatePools()
-    {
-        pools = new List<T>[prefabs.Count];
-        for(int i = 0; i < prefabs.Count; i++)
-        {
-            pools[i] = new List<T>();
-        }
-    }
 
     protected T CreateGameObjectInstance (int index)
     {
         T instance;
         List<T> pool = pools[index];
         int lastIndex = pool.Count - 1;
+        Debug.Log(lastIndex);
+        Debug.Log(pool);
         if(lastIndex >= 0)
         {
             instance = pool[lastIndex];
@@ -56,5 +49,17 @@ public abstract class GameObjectFactory<T> : ScriptableObject where T : MonoBeha
             }
         }
         SceneManager.MoveGameObjectToScene(go, scene);
+    }
+
+    public void Unload()
+    {
+        Debug.Log(name + " has been disabled");
+        SceneManager.UnloadSceneAsync(name);
+        foreach(var pool in pools)
+        {
+            pool.Clear();
+            
+        }
+        pools = null;
     }
 }

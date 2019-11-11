@@ -31,7 +31,6 @@ public class EnemyInput : MonoBehaviour, IShipInput
         if(cooldownTimer <= 0.0f){
             var hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f, hitMask);
             if(!hit){
-                Debug.Log("test");
                 OnPrimaryFire();
             }
             cooldownTimer = UnityEngine.Random.Range(minCooldown, maxCooldown);

@@ -30,6 +30,30 @@ public class ProjectileFactory : GameObjectFactory<BaseProjectile>
         Debug.Log("prefabs length: " + prefabs.Count);
     }
 
+    protected void CreatePools()
+    {
+        scene = SceneManager.GetSceneByName(name);
+        if (scene.isLoaded)
+        {
+            GameObject[] rootObjects = scene.GetRootGameObjects();
+            for (int i = 0; i < rootObjects.Length; i++)
+            {
+                BaseProjectile pooledItem = rootObjects[i].GetComponent<BaseProjectile>();
+                if (!pooledItem.gameObject.activeSelf)
+                {
+                    pools[(int)pooledItem.type].Add(pooledItem);
+                }
+            }
+            return;
+        }
+
+        pools = new List<BaseProjectile>[prefabs.Count];
+        for (int i = 0; i < prefabs.Count; i++)
+        {
+            pools[i] = new List<BaseProjectile>();
+        }
+    }
+
 
     public BaseProjectile Get(ProjectileType type)
     {

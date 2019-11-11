@@ -5331,19 +5331,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6187691305361913613}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6187691305361913615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5372,6 +5372,7 @@ MonoBehaviour:
   moveSpeed: 10
   explosionEffect: {fileID: 3220361530387199213, guid: 0857caf93567b224cb41cc0e60466ed0,
     type: 3}
+  health: 1
   type: 2
 --- !u!114 &6187691305361913602
 MonoBehaviour:
@@ -5389,6 +5390,7 @@ MonoBehaviour:
   type: 0
   projectileLayer: 12
   launchOffset: {x: 0, y: 0.2, z: 0}
+  childOfEngine: 0
 --- !u!114 &393117364
 MonoBehaviour:
   m_ObjectHideFlags: 0

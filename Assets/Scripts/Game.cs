@@ -12,7 +12,11 @@ public class Game : MonoBehaviour
     
     private List<List<GameObject>> enemyShips;
     private EnemyMover mover;
+    private RetryHandler retryHandler;
+
+    
     private GameObject boss;
+    private ShipEngine player;
 
     private int currentStage = 1;
     private bool shipsSuspended;
@@ -20,16 +24,18 @@ public class Game : MonoBehaviour
     private float moveDownAmount = 0.0f;
 
     void Start(){
+        Debug.Log("yeet");
         enemyShips = new List<List<GameObject>>();
+        retryHandler = GetComponent<RetryHandler>();
         mover = GetComponent<EnemyMover>();
         CreatePlayer();
         InitiateStageOne();
-        SuspendEnemyShips();
+        SuspendShips();
     }
 
     void CreatePlayer()
     {
-        var player = enemyFactory.Get(ShipType.Player);
+        player = enemyFactory.Get(ShipType.Player);
         player.transform.position = new Vector3(0, -4, 0);
     }
 
@@ -61,7 +67,7 @@ public class Game : MonoBehaviour
         }
     }
 
-    void SuspendEnemyShips()
+    void SuspendShips()
     {
         if (currentStage == 3) boss.GetComponent<IShipInput>().SetEnabled(false);
         if (currentStage == 1) mover.enabled = false;
@@ -75,6 +81,7 @@ public class Game : MonoBehaviour
         }
         
         shipsSuspended = true;
+        player.GetComponent<ShipInput>().canShoot = false;
     }
 
     void EnableShips()
@@ -90,6 +97,7 @@ public class Game : MonoBehaviour
             }
         }
         shipsSuspended = false;
+        player.GetComponent<ShipInput>().canShoot = true;
     }
 
     
@@ -120,6 +128,12 @@ public class Game : MonoBehaviour
 
     private void Update()
     {
+        if (!player.gameObject.activeSelf)
+        {
+            Debug.Log("player died");
+            retryHandler.currentState = GameState.Dead;
+        }
+
         if (shipsSuspended)
         {
             if(currentStage == 3)
@@ -162,13 +176,13 @@ public class Game : MonoBehaviour
             {
                 EndStageOne();
                 InitiateStageTwo();
-                SuspendEnemyShips();
+                SuspendShips();
             
             }
             else if(currentStage == 2)
             {
                 InitiateBossStage();
-                SuspendEnemyShips();
+                SuspendShips();
             }
 
             if(currentStage == 3)
@@ -176,9 +190,12 @@ public class Game : MonoBehaviour
                 if (!boss)
                 {
                     Debug.Log("GameOver, you win");
+                    retryHandler.currentState = GameState.Win;
                 }
             }
         }
+
+        
     }
 
 
