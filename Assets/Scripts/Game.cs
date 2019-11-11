@@ -5,6 +5,7 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     [SerializeField] private ShipFactory enemyFactory;
+    [SerializeField] private GameObject bossPrefab;
 
     
     private List<List<GameObject>> enemyShips;
@@ -12,10 +13,12 @@ public class Game : MonoBehaviour
     float deltaX;
     float deltaY;
 
+    int stageId = 1;
+
     void Start(){
         enemyShips = new List<List<GameObject>>();
         CreatePlayer();
-        GenerateEnemiesStageTwo();
+        GenerateEnemiesStageOne();
         GetComponent<EnemyMover>().enemyShips = enemyShips;
     }
 
@@ -53,6 +56,11 @@ public class Game : MonoBehaviour
         }
     }
 
+    void GenerateBoss()
+    {
+        Instantiate(bossPrefab);
+    }
+
     private void Update()
     {
         foreach(var shipLine in enemyShips)
@@ -63,7 +71,16 @@ public class Game : MonoBehaviour
             }
         }
         enemyShips.Clear();
-        GenerateEnemiesStageTwo();
+        if (stageId == 1)
+        {
+            GenerateEnemiesStageTwo();
+            stageId++;
+        }
+        else if(stageId == 2)
+        {
+            GenerateBoss();
+            stageId++;
+        }
     }
 
 

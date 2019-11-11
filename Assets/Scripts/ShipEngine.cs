@@ -43,7 +43,7 @@ public class ShipEngine : MonoBehaviour{
         health--;
         if(health <= 0)
         {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            if(explosionEffect) Instantiate(explosionEffect, transform.position, Quaternion.identity);
             if (originFactory)
             {
                 originFactory.Reclaim(this);
