@@ -6,6 +6,7 @@ public class ShipEngine : MonoBehaviour{
 
     [SerializeField] float moveSpeed = 5.0f;
     [SerializeField] GameObject explosionEffect;
+    [SerializeField] int health = 1;
     public ShipType type;
 
     private ShipFactory originFactory;
@@ -39,8 +40,20 @@ public class ShipEngine : MonoBehaviour{
 
     public void Kill()
     {
-        Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        originFactory.Reclaim(this);
+        health--;
+        if(health <= 0)
+        {
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            if (originFactory)
+            {
+                originFactory.Reclaim(this);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        
     }
 
 }

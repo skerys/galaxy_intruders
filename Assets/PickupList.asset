@@ -27,7 +27,7 @@ MonoBehaviour:
     weight: 4
   - pickup: {fileID: 4200164941128871821, guid: d46464201e0b53f4d9d895f80d56765c,
       type: 3}
-    weight: 3
+    weight: 300
   - pickup: {fileID: 8195302014977007854, guid: c29bdd2a5428f504a965d4f4ff4d8c94,
       type: 3}
-    weight: 2
+    weight: 300

@@ -24,14 +24,7 @@ public class BombProjectile : BaseProjectile
             ShipEngine engine = hit.gameObject.GetComponent<ShipEngine>();
             if (engine)
             {
-                if (engine.OriginFactory)
-                {
-                    engine.Kill();
-                }
-                else
-                {
-                    Destroy(engine.gameObject);
-                }
+                engine.Kill();
             }
         }
         
@@ -43,14 +36,7 @@ public class BombProjectile : BaseProjectile
 
         if (engine)
         {
-            if (engine.OriginFactory)
-            {
-                engine.Kill();
-            }
-            else
-            {
-                Destroy(engine.gameObject);
-            }
+            engine.Kill();
             DoExplosion();
         }
         OriginFactory.Reclaim(this);

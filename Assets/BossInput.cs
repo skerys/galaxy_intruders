@@ -70,12 +70,12 @@ public class BossInput : MonoBehaviour, IShipInput
             shootTimer += Time.deltaTime;
         }
 
-        var hit = Physics2D.Raycast(transform.position, Vector2.left, 4.0f, boundsLayer);
+        var hit = Physics2D.Raycast(transform.position, Vector2.left, 5.0f, boundsLayer);
         if (hit)
         {
             xSign = -1;
         }
-        hit = Physics2D.Raycast(transform.position, Vector2.right, 4.0f, boundsLayer);
+        hit = Physics2D.Raycast(transform.position, Vector2.right, 5.0f, boundsLayer);
         if (hit)
         {
             xSign = 1;
