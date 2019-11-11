@@ -7,15 +7,24 @@ public class ProjectileLauncher : MonoBehaviour
     [SerializeField] private int projectileLayer;
     [SerializeField] private Vector3 launchOffset;
 
-
+    [SerializeField] bool childOfEngine = false;
     private IShipInput input;
-    
 
-    private void Awake() {
-        input = GetComponent<IShipInput>();
+
+    private void Awake()
+    {
+        if (childOfEngine)
+        {
+            input = GetComponentInParent<IShipInput>();
+        }
+        else
+        {
+            input = GetComponent<IShipInput>();
+        }
     }
 
     private void OnEnable() {
+        Debug.Log(input);
         input.OnPrimaryFire += ShootProjectile;
     }
     
